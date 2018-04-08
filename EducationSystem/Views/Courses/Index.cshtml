@@ -1,0 +1,33 @@
+﻿
+
+<link href="~/Content/course-list.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h1 class="display-4">Курсы</h1>
+            <p class="lead">Выберите один из модулей чтобы начать совершенствовать свои знания. Изучите теорию, выполните тесты по ней. Генератор заданий для повторения изученных тем. Желаем вам успехов!</p>
+        </div>
+        @if (ViewBag.Profile is ESDataBase.Teacher)
+        {
+            <div class="col-lg-3 mt-4">
+                <h2 class="my-4">Меню</h2>
+
+                <button type="button" class="btn btn-outline-success">Добавить новый курс</button>
+
+            </div>
+        }
+
+        <div class="col-lg-9">
+            <div class="input-group mb-5">
+                <input type="text" class="form-control" placeholder="Поиск по каталогу...">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button">Найти!</button>
+                </span>
+            </div>
+            <div class="row">
+                @Html.Action("CourseList")
+            </div>
+        </div>
+    </div>
+</div>

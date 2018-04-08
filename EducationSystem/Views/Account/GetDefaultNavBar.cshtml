@@ -1,0 +1,15 @@
+﻿@model ESDataBase.UserProfile
+
+<ul class="navbar-nav mr-md-3">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @Model.FirstName
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/Profile/Index">Профиль</a>
+            <a class="dropdown-item" href="/Courses/Index">Курсы</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item logout_item" href="/Account/Logout">Выйти</a>
+        </div>
+    </li>
+</ul>

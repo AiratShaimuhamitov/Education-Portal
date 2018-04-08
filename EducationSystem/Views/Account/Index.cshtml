@@ -1,0 +1,172 @@
+﻿@model EducationSystem.Models.RegisterModel
+
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="~/Content/Site.css" />
+<link id="bsdp-css" href="~/Content/datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+<script src="~/Content/datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/datepicker/js/bootstrap-datepicker.ru.min.js"></script>
+
+<script>
+    $.fn.datepicker.defaults.format = "dd.mm.yyyy";
+    $.fn.datepicker.defaults.language = "ru";
+    $('.datepicker').datepicker();
+</script>
+
+<div class="text-center">
+    <div id="loginbox">
+        <article role="login">
+            <form class="form-signin" action="~/Account/Login" method="post">
+                <h1 class="h2 mb-3 font-weight-normal">Вход</h1>
+                <input type="email" id="inputEmail" class="form-control" name="Email" placeholder="Email" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" name="Password" placeholder="Пароль" required>
+                @Html.AntiForgeryToken()
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Запомнить меня
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block form-group" type="submit">Вход</button>
+                <div class="col-md-12 control">
+                    Еще нет аккаунта?
+                    <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                        Создать здесь
+                    </a>
+                </div>
+            </form>
+        </article>
+    </div>
+    <div id="signupbox" style="display:none;">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item h6">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#teacher" role="tab" aria-controls="home" aria-selected="true">Преподаватель</a>
+            </li>
+            <li class="nav-item h6">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#student" role="tab" aria-controls="profile" aria-selected="false">Студент</a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="teacher" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row">
+                    <div class="col-sm-12 mobile-pull">
+                        <article role="login">
+                            <h3 class="text-center"><i class="fa fa-lock"></i>Создать аккаунт преподавателя</h3>
+                            <form class="signup" action="/Account/Register" method="post">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="FirstName" placeholder="Имя">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="SecondName" placeholder="Фамилия">
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" data-provide="datepicker" class="form-control" name="DateOfBirth" placeholder="Дата рождения">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-th"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="City" placeholder="Город">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="Email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="Password" placeholder="Пароль">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="ConfirmPassword" placeholder="Подтвердить пароль">
+                                </div>
+                                <input type="hidden" name="IsTeacher" value="true" />
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Please accept the terms and conditions to proceed with your request.
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-success btn-block" value="СОЗДАТЬ">
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 control">
+                                        Уже есть аккаунт?
+                                        <a href="#" onClick="$('#signupbox').hide(); $('#loginbox').show()">
+                                            Войти
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="student" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row">
+                    <div class="col-sm-12 mobile-pull">
+                        <article role="login">
+                            <h3 class="text-center"><i class="fa fa-lock"></i> Создать аккаунт студента</h3>
+                            <form class="signup" action="/Account/Register" method="post">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="FirstName" placeholder="Имя">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="SecondName" placeholder="Фамилия">
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" data-provide="datepicker" class="form-control" name="DateOfBirth" placeholder="Дата рождения">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-th"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="City" placeholder="Город">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="Email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="Password" placeholder="Пароль">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="ConfirmPassword" placeholder="Подтвердить пароль">
+                                </div>
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Please accept the terms and conditions to proceed with your request.
+                                        </label>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="IsTeacher" value="false" />
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-success btn-block" value="СОЗДАТЬ">
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 control">
+                                        Уже есть аккаунт?
+                                        <a href="#" onClick="$('#signupbox').hide(); $('#loginbox').show()">
+                                            Войти
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

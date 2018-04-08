@@ -1,0 +1,41 @@
+﻿@model ESDataBase.Models.Test
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/BlackLayout.cshtml";
+}
+<link href="~/Content/test.css" rel="stylesheet" />
+<div class="container-fluid">
+    <nav class="col-sm-3 col-md-2 hidden-xs-down bg-dark bg-faded sidebar">
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Overview <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Git</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Analytics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Export</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="row">
+        <div class="col-lg">
+            <div class="page-block">
+                <h3 class="question-numeration pt-4 text-center">Тест по теме: @ViewBag.CourseName</h3>
+                <div class="question-header">
+                    <h5>
+                        Тест состоит из @ViewBag.QuestionsCount вопросов.
+                        <br>В каждом по одному правильному ответу. Желаем вам успехов
+                    </h5>
+                </div>
+                <div class="text-center pt-5 pb-5">
+                    @Html.ActionLink("Начать", "Start", "Test", new { @testID = Model.ID},new { @class = "btn btn-primary btn-lg" }) 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Теория</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/sidebar.css">
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-2 px-md-4 mb-2 bg-dark border-bottom box-shadow fixed-top">
+        <h4 class="my-0 mr-md-auto text-white font-weight-normal">Образовательный портал</h4>
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.Action("GetBlackNavBar", "Account");
+        }
+        else
+        {
+            <a class="btn btn-outline-primary" href="/Account/Index">Войти</a>
+        }
+    </div>
+    @RenderBody()
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
+

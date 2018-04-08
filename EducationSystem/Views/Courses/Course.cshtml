@@ -1,0 +1,124 @@
+﻿@model ESDataBase.Models.Course
+@{
+    ViewBag.Title = "Course";
+}
+
+<link rel="stylesheet" href="~/Content/course.css">
+
+<div class="container">
+    <div class="course-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h2>@Model.Name</h2>
+            </div>
+            <div class="col-md-auto">
+                <img src="@Model.ImageURL" class="course-img" />
+            </div>
+        </div>
+    </div>
+    <div class="course-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="card-deck mb-2">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h5>О курсе:</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    @Model.Description
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="card-deck mb-3 text-center">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-header">
+                                <h5 class="my-0 font-weight-normal">Изучение теории</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li>Более 3 тем для изучения</li>
+                                    <li>Видео и аудио материалы</li>
+                                    <li>Актуальная информация</li>
+                                    <li> </li>
+                                </ul>
+                                @Html.ActionLink("Изучить теорию","Index", "Theory", new { @courseId = Model.ID, @themeId = 1}, new { @class= "btn btn-lg btn-block btn-outline-primary"})
+                            </div>
+                        </div>
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-header">
+                                <h5 class="my-0 font-weight-normal">Проверь себя</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li>10 users included</li>
+                                    <li>2 GB of storage</li>
+                                    <li>Email support</li>
+                                    <li>Help center access</li>
+                                </ul>
+                                @Html.ActionLink("Проверить себя", "Index", "Test", new { @courseId = Model.ID}, new { @class = "btn btn-lg btn-block btn-outline-primary" })
+                            </div>
+                        </div>
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-header">
+                                <h5 class="my-0 font-weight-normal">Генератор заданий</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li>30 users included</li>
+                                    <li>15 GB of storage</li>
+                                    <li>Phone and email support</li>
+                                    <li>Help center access</li>
+                                </ul>
+                                <button type="button" class="btn btn-lg btn-block btn-outline-primary">Сгенерировать</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                @if (ViewBag.Profile is ESDataBase.Teacher)
+                {
+
+                    <div class="card-deck mb-2">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-header">
+                                <h5>Настройка:</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <button type="button" class="btn btn-outline-secondary">Изменить</button>
+                                        <button type="button" class="btn btn-outline-danger">Удалить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                else
+                {
+                    <div class="card-deck mb-2">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-header">
+                                <h5>Прогресс:</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @Html.Action("Author", new { authorId = Model.AuthorID + 1})
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model ESDataBase.Models.Theme
+@{
+    Layout = "~/Views/Shared/BlackLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/theory.css">
+<div class="container-fluid">
+    @Html.Action("Themes", new { @themeId = Model.ID })
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="page-block">
+                <div class="theme-header">
+                    <h2>@Model.Name</h2>
+                </div>
+                <div class="theme-body">
+                    @Model.Theory
+                </div>
+            </div>
+        </div>
+        <div class="col-lg">
+            <div class="page-block">
+                <img src="@Model.ImageURL" class="img rounded" alt="">
+            </div>
+            <div class="page-block">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="@Model.VideoFileURL" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

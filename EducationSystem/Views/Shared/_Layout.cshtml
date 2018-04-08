@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Образовательный портал</title>
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/jquery-ui.css">
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <style>
+        .logout_item {
+            border-top: 1px solid #e7e8ec;
+            color: crimson;
+            margin-top: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-2 px-md-4 mb-2 bg-white border-bottom box-shadow fixed-top">
+        <h4 class="my-0 mr-md-auto font-weight-normal">Образовательный портал</h4>
+        <!--<nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" href="#">Features</a>
+        </nav>-->
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.Action("GetDefaultNavBar", "Account");
+        }
+        else
+        {
+            <a class="btn btn-outline-primary" href="/Account/Index">Войти</a>
+        }
+    </div>
+
+    @RenderBody()
+
+
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

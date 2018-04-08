@@ -1,0 +1,39 @@
+﻿@model ESDataBase.Models.Course
+
+<nav class="col-sm-3 col-md-2 hidden-xs-down bg-dark bg-faded sidebar">
+    <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+                <!--<img src="~/Content/images/back.png" alt="Назад к курсу" />-->
+                @Html.ActionLink("Назад к курсу", "Course", "Courses", new { @id = Model.ID }, new { @class = "nav-link" })
+        </li>
+        <li class="nav-item">
+            @if ((int)ViewData["activeId"] == 1)
+            {
+                @Html.ActionLink(ViewData["firstThemeName"].ToString(), "Index", "Theory", new { @themeId = 1, @courseId = Model.ID }, new { @class = "nav-link active" })
+            }
+            else
+            {
+                @Html.ActionLink(ViewData["firstThemeName"].ToString(), "Index", "Theory", new { @themeId = 1, @courseId = Model.ID }, new { @class = "nav-link" })
+            }
+        </li>
+        @foreach (var theme in Model.Themes.Skip(1))
+        {
+            <li class="nav-item">
+                @if ((int)ViewData["activeId"] == theme.ID)
+                {
+                    @Html.ActionLink(theme.Name, "Index", "Theory", new { @themeId = theme.ID, @courseId = Model.ID }, new { @class = "nav-link active" })
+                }
+                else
+                {
+                    @Html.ActionLink(theme.Name, "Index", "Theory", new { @themeId = theme.ID, @courseId = Model.ID }, new { @class = "nav-link" })
+                }
+            </li>
+        }
+        @if(ViewBag.Profile is ESDataBase.Teacher)
+        {
+            <li class="nav-item">
+                @Html.ActionLink("Добавить новую тему", "AddTheory", "Theory", new { @id = Model.ID }, new { @class = "nav-link" })
+            </li>
+        }
+    </ul>
+</nav>

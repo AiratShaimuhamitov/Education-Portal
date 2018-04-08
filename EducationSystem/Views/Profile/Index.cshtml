@@ -1,0 +1,104 @@
+﻿@model ESDataBase.UserProfile
+@{
+    ViewBag.Title = "Profile";
+}
+
+<link rel="stylesheet" href="~/Content/profile.css" />
+<link rel="stylesheet" href="~/Content/image-upload-with-preview.css" />
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-3 text-center">
+            <div class="page-block">
+                <div class="img_wrap">
+                    @if (Model.Photo != null)
+                    {
+                        <img src="@Url.Action("GetProfileImage")" class="page-avatar-img rounded" alt="">
+                    }
+                    else
+                    {
+                        <img src="~/Content/images/unknown.jpg" class="page-avatar-img rounded" alt="">
+                    }
+                </div>
+                <button type="button" class="btn btn-outline-secondary mt-3" data-toggle="modal" data-target="#editPhoto">Изменить фотографию</button>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="page-block">
+                <div class="page-top">
+                    <h2 class="page-name">@Model.FullName</h2>
+                </div>
+                <div class="profile-info">
+                    <div class="row">
+                        <div class="label">
+                            День рождения:
+                        </div>
+                        <div class="labeled">
+                            @Model.DateOfBirth.ToShortDateString()
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">
+                            Город:
+                        </div>
+                        <div class="labeled">
+                            @Model.City
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">
+                            Статус:
+                        </div>
+                        <div class="labeled">
+                            @if (Model is ESDataBase.Teacher)
+                            {
+                                <p>Преподаватель</p>
+                            }
+                            else
+                            {
+                                <p>Студент</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="row justify-content-center">
+            <div class="col-6">
+                <div class="page-block"></div>
+            </div>
+        </div>-->
+    </div>
+</div>
+
+<div id="editPhoto" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Выберите фотографию</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="~/Account/ImageUpload" enctype="multipart/form-data">
+                    <div class="custom-file-container" data-upload-id="myFirstImage">
+                        <div class="custom-file-container__image-preview"></div>
+                        <label>Загрузить <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Удалить">x</a></label>
+                        <label class="custom-file-container__custom-file">
+                            <input type="file" class="custom-file-container__custom-file__custom-file-input" name="upload" accept="image/*">
+                            <span class="custom-file-container__custom-file__custom-file-control"></span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3 ml-auto">Загрузить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/image-upload-with-preview.js"></script>
+<script>    
+    var firstUpload = new FileUploadWithPreview('myFirstImage')
+    var firstUploadInfoButton = document.querySelector('.upload-info-button--first');
+</script>
+

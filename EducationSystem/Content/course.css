@@ -1,0 +1,49 @@
+body{
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	padding-top: 80px;
+	padding-bottom: 40px;
+}
+
+.container {
+	max-width: 1275px;
+}
+
+.card-deck .card {
+	min-width: 220px;
+}
+
+.card-header{
+	min-width: 215px;
+	background-color: #ffffff;
+	border-bottom: 1px solid #e5e5e5;
+	margin: 0px 15px;
+	padding: .75rem .75rem;
+}
+
+.border-top { border-top: 1px solid #e5e5e5; }
+
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.course-header{
+	padding: 10px 15px;
+	border-bottom: 1px solid #e7e8ec;
+}
+
+.course-body{
+	padding: 20px 15px;
+}
+
+.center-cropped {
+	width: 100px;
+	height: 100px;
+	background-position: center center;
+	background-repeat: no-repeat;
+
+	object-fit: cover;
+	object-position: center;
+}
